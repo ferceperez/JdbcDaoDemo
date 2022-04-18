@@ -30,4 +30,28 @@ public class StudentDao
     }
 
 
+    public void addStudent(Student s2) throws  Exception{
+        String url = "jdbc:mysql://localhost:3306/jdbcdao";
+        String uname = "root";
+        String pass = "souless123";
+        String query = "insert into student values (?,?)";
+        int rollno = s2.rollno;
+        String sname = s2.sname;
+
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection(url,uname,pass);
+
+        PreparedStatement st = con.prepareStatement(query);
+        st.setInt(1,rollno);
+        st.setString(2,sname);
+        int count = st.executeUpdate();
+        System.out.println(count + " row/s affected");
+
+
+        st.close();
+        con.close();
+
+
+    }
 }

@@ -4,12 +4,16 @@ public class JdbcDaoDemo
     public static void main(String[] args)
     {
         StudentDao dao = new StudentDao(); // creo un nuevo estudiante dao, osea data object
-        Student s1 = null;
+
+        Student s2 = new Student();
+        s2.rollno = 15;
+        s2.sname = "Lucas";
+
         try {
-            s1 = dao.getStudent(1); // llamo el metodo dato para obtener el estudiante con el rollno 1 en la base de datos
+            dao.addStudent(s2);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(s1.sname); //imprimo el nombre obtenido por mi busqueda en la base
+
     }
 }
